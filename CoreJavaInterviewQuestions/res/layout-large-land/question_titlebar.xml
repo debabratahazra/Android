@@ -5,7 +5,7 @@
     android:layout_height="80dp"
     android:orientation="horizontal"
     android:background="@drawable/question_titlebar"
-    android:gravity="start" >
+    android:gravity="center" >
 
     <Button
         android:id="@+id/buttonVoiceOn"

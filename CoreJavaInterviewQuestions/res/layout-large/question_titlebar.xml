@@ -5,7 +5,7 @@
     android:layout_height="80dp"
     android:orientation="horizontal"
     android:background="@drawable/question_titlebar"
-    android:gravity="start" >
+    android:gravity="center" >
 
     <Button
         android:id="@+id/buttonVoiceOn"
@@ -18,14 +18,14 @@
 
     <TextView
         android:id="@+id/textViewSubject"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:text="@string/question_titlebar"
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
         android:textSize="30sp"
         android:textColor="#ffffff"
-        android:gravity="fill" />
+        android:gravity="center" />
 
     <Button
         android:id="@+id/buttonVoiceOff"
@@ -33,7 +33,6 @@
         android:layout_height="fill_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
-        android:background="@drawable/mute"
-        android:gravity="center" />
+        android:background="@drawable/mute" />
 
 </LinearLayout>

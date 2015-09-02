@@ -23,14 +23,18 @@ public final class R {
     public static final class array {
         public static final int collection_answers=0x7f0c0000;
         public static final int collection_questions=0x7f0c0001;
-        public static final int exception_answers=0x7f0c0002;
-        public static final int exception_questions=0x7f0c0003;
-        public static final int java_basic_answers=0x7f0c0004;
-        public static final int java_basic_questions=0x7f0c0005;
-        public static final int string_answers=0x7f0c0006;
-        public static final int string_questions=0x7f0c0007;
-        public static final int thread_answer=0x7f0c0008;
-        public static final int thread_question=0x7f0c0009;
+        public static final int concurrency_answers=0x7f0c0002;
+        public static final int concurrency_questions=0x7f0c0003;
+        public static final int exception_answers=0x7f0c0004;
+        public static final int exception_questions=0x7f0c0005;
+        public static final int java_basic_answers=0x7f0c0006;
+        public static final int java_basic_questions=0x7f0c0007;
+        public static final int miscellaneous_answers=0x7f0c0008;
+        public static final int miscellaneous_questions=0x7f0c0009;
+        public static final int string_answers=0x7f0c000a;
+        public static final int string_questions=0x7f0c000b;
+        public static final int thread_answer=0x7f0c000c;
+        public static final int thread_question=0x7f0c000d;
     }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
@@ -1603,25 +1607,30 @@ containing a value of this type.
         public static final int abc_config_showMenuShortcutsWhenKeyboardPresent=0x7f050003;
     }
     public static final class color {
-        public static final int abc_background_cache_hint_selector_material_dark=0x7f060033;
-        public static final int abc_background_cache_hint_selector_material_light=0x7f060034;
+        public static final int abc_background_cache_hint_selector_material_dark=0x7f060043;
+        public static final int abc_background_cache_hint_selector_material_light=0x7f060044;
         public static final int abc_input_method_navigation_guard=0x7f060003;
-        public static final int abc_primary_text_disable_only_material_dark=0x7f060035;
-        public static final int abc_primary_text_disable_only_material_light=0x7f060036;
-        public static final int abc_primary_text_material_dark=0x7f060037;
-        public static final int abc_primary_text_material_light=0x7f060038;
-        public static final int abc_search_url_text=0x7f060039;
+        public static final int abc_primary_text_disable_only_material_dark=0x7f060045;
+        public static final int abc_primary_text_disable_only_material_light=0x7f060046;
+        public static final int abc_primary_text_material_dark=0x7f060047;
+        public static final int abc_primary_text_material_light=0x7f060048;
+        public static final int abc_search_url_text=0x7f060049;
         public static final int abc_search_url_text_normal=0x7f060000;
         public static final int abc_search_url_text_pressed=0x7f060002;
         public static final int abc_search_url_text_selected=0x7f060001;
-        public static final int abc_secondary_text_material_dark=0x7f06003a;
-        public static final int abc_secondary_text_material_light=0x7f06003b;
+        public static final int abc_secondary_text_material_dark=0x7f06004a;
+        public static final int abc_secondary_text_material_light=0x7f06004b;
         public static final int accent_material_dark=0x7f06000f;
         public static final int accent_material_light=0x7f06000e;
+        public static final int article_title=0x7f06003d;
+        public static final int articlecolor=0x7f06003c;
         public static final int background_floating_material_dark=0x7f060006;
         public static final int background_floating_material_light=0x7f060007;
         public static final int background_material_dark=0x7f060004;
         public static final int background_material_light=0x7f060005;
+        public static final int black=0x7f060037;
+        public static final int blue=0x7f060039;
+        public static final int blueback=0x7f06003b;
         /**  White 50% 
          */
         public static final int bright_foreground_disabled_material_dark=0x7f060018;
@@ -1634,10 +1643,15 @@ containing a value of this type.
         public static final int bright_foreground_material_light=0x7f060017;
         public static final int button_material_dark=0x7f060010;
         public static final int button_material_light=0x7f060011;
+        public static final int cachecolor=0x7f06003e;
+        public static final int date_color=0x7f060036;
         public static final int dim_foreground_disabled_material_dark=0x7f06001e;
         public static final int dim_foreground_disabled_material_light=0x7f06001f;
         public static final int dim_foreground_material_dark=0x7f06001c;
         public static final int dim_foreground_material_light=0x7f06001d;
+        public static final int gold=0x7f06003a;
+        public static final int gray=0x7f060038;
+        public static final int green=0x7f060041;
         /**  TODO: This is 40% alpha on the default accent color. 
          */
         public static final int highlighted_text_material_dark=0x7f060022;
@@ -1653,6 +1667,9 @@ containing a value of this type.
         public static final int material_blue_grey_950=0x7f060032;
         public static final int material_deep_teal_200=0x7f06002e;
         public static final int material_deep_teal_500=0x7f06002f;
+        public static final int mycolor=0x7f060042;
+        public static final int orange=0x7f060033;
+        public static final int pink=0x7f060040;
         public static final int primary_dark_material_dark=0x7f06000a;
         public static final int primary_dark_material_light=0x7f06000b;
         public static final int primary_material_dark=0x7f060008;
@@ -1665,6 +1682,7 @@ containing a value of this type.
         /**  26% of default values 
          */
         public static final int primary_text_disabled_material_light=0x7f06002a;
+        public static final int red=0x7f06003f;
         public static final int ripple_material_dark=0x7f06000c;
         public static final int ripple_material_light=0x7f06000d;
         public static final int secondary_text_default_material_dark=0x7f060029;
@@ -1673,10 +1691,12 @@ containing a value of this type.
         public static final int secondary_text_disabled_material_light=0x7f06002b;
         public static final int switch_thumb_disabled_material_dark=0x7f060014;
         public static final int switch_thumb_disabled_material_light=0x7f060015;
-        public static final int switch_thumb_material_dark=0x7f06003c;
-        public static final int switch_thumb_material_light=0x7f06003d;
+        public static final int switch_thumb_material_dark=0x7f06004c;
+        public static final int switch_thumb_material_light=0x7f06004d;
         public static final int switch_thumb_normal_material_dark=0x7f060012;
         public static final int switch_thumb_normal_material_light=0x7f060013;
+        public static final int transparent=0x7f060035;
+        public static final int white=0x7f060034;
     }
     public static final class dimen {
         /**  Default content inset of an action bar. 
@@ -2448,6 +2468,7 @@ containing a value of this type.
     
          */
         public static final int Base_Widget_AppCompat_Toolbar_Button_Navigation=0x7f0b00a9;
+        public static final int MyTheme=0x7f0b0127;
         public static final int Platform_AppCompat=0x7f0b00ff;
         public static final int Platform_AppCompat_Light=0x7f0b0100;
         public static final int Platform_ThemeOverlay_AppCompat_Dark=0x7f0b0114;
@@ -2659,6 +2680,7 @@ containing a value of this type.
          */
         public static final int Widget_AppCompat_Toolbar=0x7f0b0042;
         public static final int Widget_AppCompat_Toolbar_Button_Navigation=0x7f0b0043;
+        public static final int WindowTitleBackground=0x7f0b0126;
     }
     public static final class styleable {
         /**  ============================================ 
