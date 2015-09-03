@@ -1,14 +1,15 @@
 package sample.code.corejavainterviewquestion.questions;
 
 import sample.code.corejavainterviewquestion.R;
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class StringQuestions extends ActionBarActivity implements OnClickListener {
+public class StringQuestions extends Activity implements OnClickListener {
 	
 	private static final String ANSWER = "answer";
 	private static final String INDEX = "index";
@@ -25,8 +26,12 @@ public class StringQuestions extends ActionBarActivity implements OnClickListene
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+		
 		// Set layout xml file
 		setContentView(R.layout.questions_template);
+		
+		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,R.layout.question_titlebar);
 		
 		// initialize the TextView
 		textviewQuestion = (TextView) findViewById(R.id.textViewQuestion);

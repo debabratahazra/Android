@@ -1978,7 +1978,6 @@ containing a value of this type.
         public static final int voice_on=0x7f02004b;
     }
     public static final class id {
-        public static final int Concurrency_questions=0x7f090054;
         public static final int action0=0x7f090059;
         public static final int action_bar=0x7f090040;
         public static final int action_bar_activity_content=0x7f090003;
@@ -2004,13 +2003,14 @@ containing a value of this type.
         public static final int buttonLeft=0x7f090070;
         public static final int buttonPanel=0x7f090036;
         public static final int buttonRight=0x7f090072;
-        public static final int buttonVoiceOff=0x7f090069;
+        public static final int buttonVoiceOff=0x7f090068;
         public static final int buttonVoiceOn=0x7f090067;
         public static final int cancel_action=0x7f09005a;
         public static final int checkbox=0x7f090038;
         public static final int chronometer=0x7f090060;
         public static final int collapseActionView=0x7f09001a;
-        public static final int collection_questions=0x7f090053;
+        public static final int collection_questions=0x7f090054;
+        public static final int concurrency_questions=0x7f090055;
         public static final int contentPanel=0x7f090031;
         public static final int custom=0x7f090035;
         public static final int customPanel=0x7f090034;
@@ -2022,7 +2022,7 @@ containing a value of this type.
         public static final int edit_query=0x7f090042;
         public static final int end=0x7f090021;
         public static final int end_padder=0x7f090065;
-        public static final int exception_questions=0x7f090051;
+        public static final int exception_questions=0x7f090053;
         public static final int expand_activities_button=0x7f090027;
         public static final int expanded_menu=0x7f090037;
         public static final int home=0x7f090000;
@@ -2039,7 +2039,7 @@ containing a value of this type.
         public static final int mainactivity=0x7f09004f;
         public static final int media_actions=0x7f09005c;
         public static final int middle=0x7f090022;
-        public static final int miscellaneous_questions=0x7f090055;
+        public static final int miscellaneous_questions=0x7f090056;
         public static final int multiply=0x7f090014;
         public static final int never=0x7f09001c;
         public static final int none=0x7f09000f;
@@ -2073,7 +2073,7 @@ containing a value of this type.
         public static final int src_in=0x7f090017;
         public static final int src_over=0x7f090018;
         public static final int status_bar_latest_event_content=0x7f09005b;
-        public static final int string_questions=0x7f090056;
+        public static final int string_questions=0x7f090051;
         public static final int submit_area=0x7f09004b;
         public static final int tabMode=0x7f09000c;
         public static final int text=0x7f090063;
@@ -2082,7 +2082,7 @@ containing a value of this type.
         public static final int textViewAnswer=0x7f09006f;
         public static final int textViewMainTitlebar=0x7f090058;
         public static final int textViewQuestion=0x7f09006d;
-        public static final int textViewSubject=0x7f090068;
+        public static final int textViewSubject=0x7f090069;
         public static final int textViewXX=0x7f09006b;
         public static final int textViewYY=0x7f09006c;
         public static final int thread_questions=0x7f090052;
