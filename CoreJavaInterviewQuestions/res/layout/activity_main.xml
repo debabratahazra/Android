@@ -45,7 +45,7 @@
         android:layout_below="@+id/basic_questions"
         android:layout_marginStart="33dp"
         android:layout_marginLeft="33dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/button_press_style"
         android:text="@string/java_thread"
         android:textColor="#ffffff" />
@@ -75,7 +75,7 @@
         android:layout_below="@+id/thread_questions"
         android:layout_marginStart="33dp"
         android:layout_marginLeft="33dp"
-        android:layout_marginTop="63dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/button_press_style"
         android:text="@string/java_collection"
         android:textColor="#ffffff" />
@@ -105,9 +105,23 @@
         android:layout_below="@+id/collection_questions"
         android:layout_marginStart="33dp"
         android:layout_marginLeft="33dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/button_press_style"
         android:text="@string/java_miscellaneous"
         android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/rateus"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignBaseline="@+id/miscellaneous_questions"
+        android:layout_alignBottom="@+id/miscellaneous_questions"
+        android:layout_alignLeft="@+id/concurrency_questions"
+        android:layout_alignStart="@+id/concurrency_questions"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/rate_button_press"
+        android:text="@string/rate_us"
+        android:textColor="#ff0000" />
 
 </RelativeLayout>

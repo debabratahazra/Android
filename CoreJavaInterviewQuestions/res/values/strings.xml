@@ -14,5 +14,6 @@
 	<string name="question">Question</string>
 	<string name="answer">Press below ? button for Answer</string>
 	<string name="main_titlebar">Core Java Interview Questions</string>
-	<string name="question_titlebar">Subject</string>
+	<string name="question_titlebar">Subjects</string>
+	<string name="rate_us">Rate Us</string>
 </resources>

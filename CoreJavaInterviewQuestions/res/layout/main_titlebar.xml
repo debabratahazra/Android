@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/main_titlebar"
         android:textColor="#ffffff"
-        android:textSize="21sp" />
+        android:textSize="21sp"
+        android:gravity="center" />
 
 </LinearLayout>

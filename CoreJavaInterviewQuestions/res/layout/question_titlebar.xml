@@ -7,7 +7,7 @@
     android:background="@drawable/question_titlebar"
     android:gravity="start" >
 
-    <Button
+    <!-- <Button
         android:id="@+id/buttonVoiceOn"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -19,15 +19,28 @@
         android:id="@+id/buttonVoiceOff"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/mute" /> -->
+
+    <ToggleButton
+        android:id="@+id/voice_on_off"
+        android:layout_width="50dp"
+        android:layout_height="fill_parent"
+        android:textOn=""
+        android:textOff=""
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@drawable/mute" />
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:background="@null"
+        android:button="@drawable/toggle_voice_onoff" />
 
     <TextView
         android:id="@+id/textViewSubject"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:text="@string/question_titlebar"
         android:textColor="#ffffff"
         android:textSize="20sp" />

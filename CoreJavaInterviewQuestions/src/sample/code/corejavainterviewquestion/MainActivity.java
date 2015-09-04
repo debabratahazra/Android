@@ -1,5 +1,6 @@
 package sample.code.corejavainterviewquestion;
 
+import sample.code.corejavainterviewquestion.others.RateUs;
 import sample.code.corejavainterviewquestion.questions.BasicQuestions;
 import sample.code.corejavainterviewquestion.questions.CollectionQuestions;
 import sample.code.corejavainterviewquestion.questions.ConcurrencyQuestions;
@@ -19,7 +20,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	
 	private Button buttonBasicQ, buttonStringQ, buttonThreadQ,
 			buttonExceptionQ, buttonCollectionQ, buttonConcurrencyQ,
-			buttonMiscellaneousQ;
+			buttonMiscellaneousQ, buttonRateUs;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 		buttonMiscellaneousQ = (Button) findViewById(R.id.miscellaneous_questions);
 		buttonMiscellaneousQ.setOnClickListener(this);
+		
+		buttonRateUs = (Button) findViewById(R.id.rateus);
+		buttonRateUs.setOnClickListener(this);
 	}
 
 	@Override
@@ -87,6 +91,10 @@ public class MainActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.miscellaneous_questions:
 			intent = new Intent(MainActivity.this, MiscellaneousQuestions.class);
+			startActivity(intent);
+			break;
+		case R.id.rateus:
+			intent = new Intent(MainActivity.this, RateUs.class);
 			startActivity(intent);
 			break;
 		default:

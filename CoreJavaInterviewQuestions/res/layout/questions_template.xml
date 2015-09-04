@@ -75,7 +75,7 @@
             android:id="@+id/buttonLeft"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/left_arrow" />
+            android:background="@drawable/left_arrow_button_press" />
 
         <Button
             android:id="@+id/buttonAnswer"
@@ -87,7 +87,7 @@
             android:id="@+id/buttonRight"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/right_arrow" />
+            android:background="@drawable/right_arrow_button_press" />
     </LinearLayout>
 
 </LinearLayout>
