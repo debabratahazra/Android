@@ -1,13 +1,14 @@
 package sample.code.corejavainterviewquestion.questions;
 
 import sample.code.corejavainterviewquestion.R;
+import sample.code.corejavainterviewquestion.util.Utils;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class CollectionQuestions extends Activity implements OnClickListener {
 	
@@ -17,8 +18,9 @@ public class CollectionQuestions extends Activity implements OnClickListener {
 	private String[] collectionAnswers = null;
 	private int index;
 	
-	private TextView textviewQuestion, textviewAnswer, textviewXX, textviewYY;
+	private TextView textviewQuestion, textviewAnswer, textviewXX, textviewYY, textviewSubject;
 	private Button buttonLeft, buttonShowAnswer, buttonRight;
+	private ToggleButton toggleButtonOnOff;
 	
 	private String defaultTextviewAnswer = null;
 	
@@ -26,12 +28,7 @@ public class CollectionQuestions extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-		
-		// Set layout xml file
-		setContentView(R.layout.questions_template);
-		
-		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,R.layout.question_titlebar);
+		Utils.customeTitle(this);
 		
 		// initialize the TextView
 		textviewQuestion = (TextView) findViewById(R.id.textViewQuestion);
@@ -46,6 +43,8 @@ public class CollectionQuestions extends Activity implements OnClickListener {
 		buttonRight.setOnClickListener(this);
 		buttonShowAnswer = (Button) findViewById(R.id.buttonAnswer);
 		buttonShowAnswer.setOnClickListener(this);
+		
+		toggleButtonOnOff = (ToggleButton) findViewById(R.id.voice_on_off);
 		
 		// Import and initialize the string-array elements from values folder
 		collectionQuestions = getResources().getStringArray(R.array.collection_questions);
@@ -62,6 +61,12 @@ public class CollectionQuestions extends Activity implements OnClickListener {
 		textviewAnswer.setText(defaultTextviewAnswer);
 		textviewXX.setText(String.valueOf(index + 1) + "/" );
 		textviewYY.setText(String.valueOf(collectionQuestions.length));
+		
+		textviewSubject.setText("Java - Collections");
+		
+		// Text to speech conversion
+		Utils.textToSpeechConversion(toggleButtonOnOff, getApplicationContext(), this);
+		Utils.addTextToSpeechListener(toggleButtonOnOff, getApplicationContext(), textviewAnswer, defaultTextviewAnswer);
 	}
 	
 	@Override
@@ -86,33 +91,8 @@ public class CollectionQuestions extends Activity implements OnClickListener {
 	
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.buttonLeft:
-			index--;
-			if(index< 0) {
-				index++;
-				break;
-			}
-			textviewAnswer.setText(defaultTextviewAnswer);
-			textviewQuestion.setText(collectionQuestions[index]);
-			textviewXX.setText(String.valueOf(index + 1) + "/" );
-			break;
-		case R.id.buttonRight:
-			index++;
-			if((index+1) > collectionQuestions.length){
-				index--;
-				break;
-			}
-			textviewAnswer.setText(defaultTextviewAnswer);
-			textviewQuestion.setText(collectionQuestions[index]);
-			textviewXX.setText(String.valueOf(index + 1) + "/" );
-			
-			break;
-		case R.id.buttonAnswer:
-			textviewAnswer.setText(collectionAnswers[index]);
-			break;
-		default:
-			break;
-		}
+		index = Utils.onClickEvent(v, index, textviewAnswer, textviewQuestion,
+				textviewXX, collectionQuestions, collectionAnswers,
+				defaultTextviewAnswer);
 	}
 }
