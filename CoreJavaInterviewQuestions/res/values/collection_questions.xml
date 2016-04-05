@@ -40,6 +40,7 @@
         <item>How can we create a synchronized collection from given collection?</item>
         <item>What are common algorithms implemented in Collections Framework?</item>
         <item>What is Java Priority Queue?</item>
+        <item>What is BlockingQueue?</item>
         
     </string-array>
     

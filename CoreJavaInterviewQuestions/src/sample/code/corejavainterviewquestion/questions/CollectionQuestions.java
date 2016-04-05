@@ -4,6 +4,7 @@ import sample.code.corejavainterviewquestion.R;
 import sample.code.corejavainterviewquestion.util.Utils;
 import android.app.Activity;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -23,18 +24,22 @@ public class CollectionQuestions extends Activity implements OnClickListener {
 	private ToggleButton toggleButtonOnOff;
 	
 	private String defaultTextviewAnswer = null;
+	private TextToSpeech textToSpeech;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		Utils.customeTitle(this);
+		Utils.getInstance().customeTitle(this);
 		
 		// initialize the TextView
 		textviewQuestion = (TextView) findViewById(R.id.textViewQuestion);
 		textviewAnswer = (TextView) findViewById(R.id.textViewAnswer);
 		textviewXX = (TextView) findViewById(R.id.textViewXX);
 		textviewYY = (TextView) findViewById(R.id.textViewYY);
+		
+		// Question template title
+		textviewSubject = (TextView) findViewById(R.id.textViewSubject);
 		
 		// Initialize the Button and set the onClickListener for Button
 		buttonLeft = (Button) findViewById(R.id.buttonLeft);
@@ -65,8 +70,8 @@ public class CollectionQuestions extends Activity implements OnClickListener {
 		textviewSubject.setText("Java - Collections");
 		
 		// Text to speech conversion
-		Utils.textToSpeechConversion(toggleButtonOnOff, getApplicationContext(), this);
-		Utils.addTextToSpeechListener(toggleButtonOnOff, getApplicationContext(), textviewAnswer, defaultTextviewAnswer);
+		textToSpeech = Utils.getInstance().textToSpeechConversion(toggleButtonOnOff, getApplicationContext(), this);
+		Utils.getInstance().addTextToSpeechListener(toggleButtonOnOff, getApplicationContext(), textviewAnswer, defaultTextviewAnswer);
 	}
 	
 	@Override
@@ -91,8 +96,14 @@ public class CollectionQuestions extends Activity implements OnClickListener {
 	
 	@Override
 	public void onClick(View v) {
-		index = Utils.onClickEvent(v, index, textviewAnswer, textviewQuestion,
+		index = Utils.getInstance().onClickEvent(v, index, textviewAnswer, textviewQuestion,
 				textviewXX, collectionQuestions, collectionAnswers,
-				defaultTextviewAnswer);
+				defaultTextviewAnswer, textToSpeech);
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		Utils.getInstance().stopTextToSpeech(true, textToSpeech);
 	}
 }

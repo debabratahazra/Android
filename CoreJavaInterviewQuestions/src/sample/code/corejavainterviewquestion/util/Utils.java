@@ -18,10 +18,12 @@ import android.widget.ToggleButton;
 
 public class Utils {
 
-	private static int result;
-	private static TextToSpeech textToSpeech;
+	private int result;
+	private TextToSpeech textToSpeech;
 
-	public static void customeTitle(Activity activity) {
+	private static final Utils instance = new Utils();
+
+	public void customeTitle(Activity activity) {
 		activity.requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 
 		// Set layout xml file
@@ -31,7 +33,11 @@ public class Utils {
 				R.layout.question_titlebar);
 	}
 
-	public static TextToSpeech textToSpeechConversion(
+	public static Utils getInstance() {
+		return instance;
+	}
+
+	public TextToSpeech textToSpeechConversion(
 			final ToggleButton toggleButtonOnOff, final Context context,
 			final Activity activity) {
 
@@ -77,12 +83,14 @@ public class Utils {
 		return textToSpeech;
 	}
 
-	public static OnCheckedChangeListener addTextToSpeechListener(
-			final ToggleButton toggleButtonOnOff, final Context context,
-			final TextView textviewAnswer, final String defaultTextviewAnswer) {
-		OnCheckedChangeListener onCheckListener = new CompoundButton.OnCheckedChangeListener() {
+	public void addTextToSpeechListener(final ToggleButton toggleButtonOnOff,
+			final Context context, final TextView textviewAnswer,
+			final String defaultTextviewAnswer) {
+
+		final OnCheckedChangeListener onCheckListener = new CompoundButton.OnCheckedChangeListener() {
 			public void onCheckedChanged(CompoundButton buttonView,
 					boolean isChecked) {
+
 				// Toggle On Off for Text to Speech
 				if (result == TextToSpeech.LANG_NOT_SUPPORTED
 						|| result == TextToSpeech.LANG_MISSING_DATA) {
@@ -117,13 +125,15 @@ public class Utils {
 			}
 		};
 		toggleButtonOnOff.setOnCheckedChangeListener(onCheckListener);
-		return onCheckListener;
 	}
-	
-	public static int onClickEvent(View v, int index, TextView textviewAnswer, TextView textviewQuestion,
-			TextView textviewXX, String[] questions, String[] answers, String defaultText) {
-		
-		stopTextToSpeech(false);
+
+	public int onClickEvent(final View v, int index,
+			final TextView textviewAnswer, final TextView textviewQuestion,
+			final TextView textviewXX, final String[] questions,
+			final String[] answers, final String defaultText,
+			final TextToSpeech textToSpeech) {
+
+		stopTextToSpeech(false, textToSpeech);
 		switch (v.getId()) {
 		case R.id.buttonLeft:
 			index--;
@@ -153,11 +163,12 @@ public class Utils {
 		}
 		return index;
 	}
-	
-	public static void stopTextToSpeech(boolean isShutdown) {
+
+	public void stopTextToSpeech(final boolean isShutdown,
+			final TextToSpeech textToSpeech) {
 		if (textToSpeech != null) {
 			textToSpeech.stop();
-			if(isShutdown)
+			if (isShutdown)
 				textToSpeech.shutdown();
 		}
 	}

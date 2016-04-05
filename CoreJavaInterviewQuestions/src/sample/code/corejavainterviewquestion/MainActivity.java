@@ -1,6 +1,5 @@
 package sample.code.corejavainterviewquestion;
 
-import sample.code.corejavainterviewquestion.others.RateUs;
 import sample.code.corejavainterviewquestion.questions.BasicQuestions;
 import sample.code.corejavainterviewquestion.questions.CollectionQuestions;
 import sample.code.corejavainterviewquestion.questions.ConcurrencyQuestions;
@@ -9,7 +8,9 @@ import sample.code.corejavainterviewquestion.questions.MiscellaneousQuestions;
 import sample.code.corejavainterviewquestion.questions.StringQuestions;
 import sample.code.corejavainterviewquestion.questions.ThreadQuestions;
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -94,8 +95,16 @@ public class MainActivity extends Activity implements OnClickListener {
 			startActivity(intent);
 			break;
 		case R.id.rateus:
-			intent = new Intent(MainActivity.this, RateUs.class);
-			startActivity(intent);
+			// Open the Google Play store for rate this App
+			try{
+				Uri uri = Uri.parse("market://details?id=" + getPackageName());
+				Intent gotoMarketIntent = new Intent(Intent.ACTION_VIEW, uri);
+				startActivity(gotoMarketIntent);
+			}catch(ActivityNotFoundException e){
+				 Uri uri = Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName());
+				 Intent gotoMarketIntent = new Intent(Intent.ACTION_VIEW, uri);
+				startActivity(gotoMarketIntent);
+			}
 			break;
 		default:
 			break;

@@ -2,7 +2,62 @@
 <resources>
     <string-array name="concurrency_answers">
         <item>
-            
+            Atomic operations are performed in a single unit of task without interference from other
+				operations. Atomic operations are necessity in multi-threaded environment to avoid data inconsistency.\n
+			int++ is not an atomic operation. So by the time one threads read it’s value and increment it by
+				one, other thread has read the older value leading to wrong result.\n
+			To solve this issue, we will have to make sure that increment operation on count is atomic, we
+				can do that using Synchronization but Java 5 java.util.concurrent.atomic provides wrapper
+				classes for int and long that can be used to achieve this atomically without usage of Synchronization.
+        </item>
+        <item>
+            Lock interface provide more extensive locking operations than can be obtained using
+				synchronized methods and statements. They allow more flexible structuring, may have quite
+				different properties, and may support multiple associated Condition objects.\n\n
+			The advantages of a lock are :\n
+			1. it’s possible to make them fair\n
+			2. It’s possible to make a thread responsive to interruption while waiting on a Lock object.\n
+			3. It’s possible to try to acquire the lock, but return immediately or after a timeout if the
+				lock can’t be acquired\n
+			4. It’s possible to acquire and release locks in different scopes, and in different orders.
+        </item>
+        <item>
+            In Java 5, Executor framework was introduced with the java.util.concurrent.Executor interface.\n
+			The Executor framework is a framework for standardizing invocation, scheduling, execution,
+				and control of asynchronous tasks according to a set of execution policies.\n
+			Creating a lot many threads with no bounds to the maximum threshold can cause application to
+				run out of heap memory. So, creating a ThreadPool is a better solution as a finite number of
+				threads can be pooled and reused. Executors framework facilitate process of creating Thread pools in java.
+        </item>
+        <item>
+            Java 5 introduced java.util.concurrent.Callable interface in concurrency package that is similar
+				to Runnable interface but it can return any Object and able to throw Exception.\n
+			Callable interface use Generic to define the return type of Object. Executors class provide useful
+				methods to execute Callable in a thread pool. Since callable tasks run in parallel, we have to
+				wait for the returned Object. Callable tasks return java.util.concurrent.Future object. Using
+				Future we can find out the status of the Callable task and get the returned Object. It provides
+				get() method that can wait for the Callable to finish and then return the result.
+        </item>
+        <item>
+            FutureTask is the base implementation class of Future interface and we can use it with
+				Executors for asynchronous processing. Most of the time we don’t need to use FutureTask class
+				but it comes real handy if we want to override some of the methods of Future interface and want
+				to keep most of the base implementation. We can just extend this class and override the methods
+				according to our requirements.
+        </item>
+        <item>
+            Java Collection classes are fail-fast which means that if the Collection will be changed while
+				some thread is traversing over it using iterator, the iterator.next() will throw
+				ConcurrentModificationException.\n
+			Concurrent Collection classes support full concurrency of retrievals and adjustable expected
+				concurrency for updates.\n
+			Major classes are ConcurrentHashMap, CopyOnWriteArrayList and CopyOnWriteArraySet.
+        </item>
+        <item>
+            Executors class provide utility methods for Executor, ExecutorService,
+				ScheduledExecutorService, ThreadFactory, and Callable classes.\n
+			Executors class can be used to easily create Thread Pool in java, also this is the only class
+				supporting execution of Callable implementations.
         </item>
         
     </string-array>

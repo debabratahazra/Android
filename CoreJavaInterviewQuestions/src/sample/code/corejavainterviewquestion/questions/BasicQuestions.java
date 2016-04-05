@@ -4,6 +4,7 @@ import sample.code.corejavainterviewquestion.R;
 import sample.code.corejavainterviewquestion.util.Utils;
 import android.app.Activity;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -23,12 +24,13 @@ public class BasicQuestions extends Activity implements OnClickListener {
 	private ToggleButton toggleButtonOnOff;
 
 	private String defaultTextviewAnswer = null;
+	private TextToSpeech textToSpeech;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		Utils.customeTitle(this);
+		Utils.getInstance().customeTitle(this);
 
 		// initialize the TextView
 		textviewQuestion = (TextView) findViewById(R.id.textViewQuestion);
@@ -71,9 +73,9 @@ public class BasicQuestions extends Activity implements OnClickListener {
 		textviewSubject.setText("Java - Basics");
 
 		// Text to Speech conversion
-		Utils.textToSpeechConversion(toggleButtonOnOff,
+		textToSpeech = Utils.getInstance().textToSpeechConversion(toggleButtonOnOff,
 				getApplicationContext(), this);
-		Utils.addTextToSpeechListener(toggleButtonOnOff,
+		Utils.getInstance().addTextToSpeechListener(toggleButtonOnOff,
 				getApplicationContext(), textviewAnswer, defaultTextviewAnswer);
 	}
 
@@ -97,13 +99,13 @@ public class BasicQuestions extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		index = Utils.onClickEvent(v, index, textviewAnswer, textviewQuestion,
-				textviewXX, basicQuestions, basicAnswers, defaultTextviewAnswer);
+		index = Utils.getInstance().onClickEvent(v, index, textviewAnswer, textviewQuestion,
+				textviewXX, basicQuestions, basicAnswers, defaultTextviewAnswer, textToSpeech);
 	}
 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		Utils.stopTextToSpeech(true);
+		Utils.getInstance().stopTextToSpeech(true, textToSpeech);
 	}
 }

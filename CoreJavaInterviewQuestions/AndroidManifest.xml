@@ -27,6 +27,8 @@
         <activity android:name=".questions.ThreadQuestions"></activity>
         <activity android:name=".questions.BasicQuestions"></activity>
         <activity android:name=".questions.CollectionQuestions"></activity>
+        <activity android:name=".questions.ConcurrencyQuestions"></activity>
+        <activity android:name=".questions.MiscellaneousQuestions"></activity>    
     </application>
 
 </manifest>

@@ -2,8 +2,20 @@
 <resources>
     <string-array name="concurrency_questions">
         <item>
-            
+            What is atomic operation?\n
+            What are atomic classes in Java Concurrency API?
         </item>
+        <item>
+            What is Lock interface in Java Concurrency API?\n
+			What are its benefits over synchronization?
+        </item>
+        <item>
+            What is Executors Framework?
+        </item>
+        <item>What is Callable and Future?</item>
+        <item>What is FutureTask Class?</item>
+        <item>What are Concurrent Collection Classes?</item>
+        <item>What is Executors Class?</item>
         
     </string-array>
 </resources>

@@ -1,13 +1,15 @@
 package sample.code.corejavainterviewquestion.questions;
 
 import sample.code.corejavainterviewquestion.R;
+import sample.code.corejavainterviewquestion.util.Utils;
 import android.app.Activity;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class MiscellaneousQuestions extends Activity implements OnClickListener {
 
@@ -17,29 +19,28 @@ public class MiscellaneousQuestions extends Activity implements OnClickListener 
 	private String[] miscAnswers = null;
 	private int index;
 
-	private TextView textviewQuestion, textviewAnswer, textviewXX, textviewYY;
+	private TextView textviewQuestion, textviewAnswer, textviewXX, textviewYY, textviewSubject;
 	private Button buttonLeft, buttonShowAnswer, buttonRight;
+	private ToggleButton toggleButtonOnOff;
 
 	private String defaultTextviewAnswer = null;
+	private TextToSpeech textToSpeech;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-
-		// Set layout xml file
-		setContentView(R.layout.questions_template);
-
-		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,
-				R.layout.question_titlebar);
-
+		Utils.getInstance().customeTitle(this);
+		
 		// initialize the TextView
 		textviewQuestion = (TextView) findViewById(R.id.textViewQuestion);
 		textviewAnswer = (TextView) findViewById(R.id.textViewAnswer);
 		textviewXX = (TextView) findViewById(R.id.textViewXX);
 		textviewYY = (TextView) findViewById(R.id.textViewYY);
 
+		// Question template title
+		textviewSubject = (TextView) findViewById(R.id.textViewSubject);
+				
 		// Initialize the Button and set the onClickListener for Button
 		buttonLeft = (Button) findViewById(R.id.buttonLeft);
 		buttonLeft.setOnClickListener(this);
@@ -47,6 +48,9 @@ public class MiscellaneousQuestions extends Activity implements OnClickListener 
 		buttonRight.setOnClickListener(this);
 		buttonShowAnswer = (Button) findViewById(R.id.buttonAnswer);
 		buttonShowAnswer.setOnClickListener(this);
+		
+		// Initial Toggle Button
+		toggleButtonOnOff = (ToggleButton) findViewById(R.id.voice_on_off);
 
 		// Import and initialize the string-array elements from values folder
 		miscQuestions = getResources().getStringArray(
@@ -65,6 +69,14 @@ public class MiscellaneousQuestions extends Activity implements OnClickListener 
 		textviewAnswer.setText(defaultTextviewAnswer);
 		textviewXX.setText(String.valueOf(index + 1) + "/");
 		textviewYY.setText(String.valueOf(miscQuestions.length));
+		
+		textviewSubject.setText("Java - Miscellaneous");
+
+		// Text to Speech conversion
+		textToSpeech = Utils.getInstance().textToSpeechConversion(toggleButtonOnOff,
+				getApplicationContext(), this);
+		Utils.getInstance().addTextToSpeechListener(toggleButtonOnOff,
+				getApplicationContext(), textviewAnswer, defaultTextviewAnswer);
 	}
 
 	@Override
@@ -89,33 +101,13 @@ public class MiscellaneousQuestions extends Activity implements OnClickListener 
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.buttonLeft:
-			index--;
-			if (index < 0) {
-				index++;
-				break;
-			}
-			textviewAnswer.setText(defaultTextviewAnswer);
-			textviewQuestion.setText(miscQuestions[index]);
-			textviewXX.setText(String.valueOf(index + 1) + "/");
-			break;
-		case R.id.buttonRight:
-			index++;
-			if ((index + 1) > miscQuestions.length) {
-				index--;
-				break;
-			}
-			textviewAnswer.setText(defaultTextviewAnswer);
-			textviewQuestion.setText(miscQuestions[index]);
-			textviewXX.setText(String.valueOf(index + 1) + "/");
-
-			break;
-		case R.id.buttonAnswer:
-			textviewAnswer.setText(miscAnswers[index]);
-			break;
-		default:
-			break;
-		}
+		index = Utils.getInstance().onClickEvent(v, index, textviewAnswer, textviewQuestion,
+				textviewXX, miscQuestions, miscAnswers, defaultTextviewAnswer, textToSpeech);
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		Utils.getInstance().stopTextToSpeech(true, textToSpeech);
 	}
 }
